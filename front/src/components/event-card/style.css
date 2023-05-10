@@ -1,0 +1,46 @@
+.card-event {
+    border: solid 2px rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    cursor: pointer;
+}
+
+.card-event:hover {
+    border: solid 2px #3f80ff;
+    background: #252e37;
+    scale: 1.025;
+}
+
+.card-event__item {
+    height: 250px;
+}
+
+.card-event .card-event__favorite.user-favorite div{
+    margin: auto 2px;
+}
+.card-event .card-event__favorite,
+.card-event .card-event__favorite.user-favorite div{
+    opacity: 0;
+}
+.card-event:hover .card-event__favorite i, 
+.card-event:hover .card-event__favorite div, 
+.card-event:hover .card-event__favorite {
+    opacity: 1;
+    color: #4e555c !important;
+}
+
+.card-event:hover .card-event__favorite.user-favorite div,
+.card-event .card-event__favorite.user-favorite i,
+.card-event .card-event__favorite.user-favorite,
+.card-event .card-event__favorite:hover div,
+.card-event .card-event__favorite:hover i {
+    opacity: 1;
+    color: #3f80ff !important;
+}
+
+.card-event .card-event__favorite.user-favorite:hover div,
+.card-event .card-event__favorite.user-favorite:hover i {
+    opacity: 1;
+    color: #ff2768 !important;
+}

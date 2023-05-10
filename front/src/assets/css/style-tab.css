@@ -1,0 +1,38 @@
+@media screen and (max-width: 991px) {
+    .user-window {
+        min-width: 80%;
+        width: calc(90% - 40px);
+    }
+
+
+    .detail-event__title i {
+        transform: translateX(150%);
+        opacity: 1;
+    }
+
+    .home__pres__container__title__main-sub {
+        display: none;
+    }
+
+    .home__pres__container {
+        height: auto;
+    }
+
+    .home__contact__container {
+        flex-wrap: wrap;
+    }
+
+    .detail-event {
+        height: auto;
+    }
+
+    .user-page__user-info {
+        height: auto;
+    }
+
+    .user-page__user-info__container {
+        height: auto;
+        margin-bottom: 50px;
+    }
+    
+}

@@ -1,0 +1,129 @@
+.detail-event {
+    width: calc(100vw - 100px);
+    height: calc(94vh - 100px);
+    position: absolute;
+    background: #000000bb;
+    bottom: 0;
+    left: 0;
+    z-index: 8;
+    backdrop-filter: blur(9px);
+    overflow-y: scroll;
+}
+
+
+.detail-event__bloc-objects__object,
+.detail-event__bloc-colors__color {
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.detail-event__bloc-objects__object:hover,
+.detail-event__bloc-colors__color:hover {
+    background: #252e37;
+}
+
+.detail-event__bloc-objects__object p,
+.detail-event__bloc-colors__color p {
+    margin: 0;
+}
+
+.detail-event__bloc-colors__color__info-value,
+.detail-event__bloc-objects__object__info-value {
+    width: 100px;
+    text-align: end;
+}
+
+.detail-event__bloc-objects__object__pastille,
+.detail-event__bloc-colors__color__pastille {
+    width: 20px;
+    height: 20px;
+    border: solid 1px #ffffff00;
+}
+
+.detail-event__bloc-colors__color__pastille {
+    border: solid 1px lightgray;
+    border-radius: 5px;
+}
+
+.detail-event__title {
+    padding: 5px 10px;
+    border-bottom: lightgray solid 2px;
+    color: lightgray;
+    cursor: default;
+}
+
+.detail-event__bloc-object__title,
+.detail-event__bloc-colors__title {
+    padding: 5px 10px;
+    color: #3f80ff;
+}
+
+.detail-event__info_link a {
+    color: #3f80ff;
+}
+
+.detail-event__bloc-colors__color::after,
+.detail-event__bloc-objects__object::after {
+    content: "COPIED";
+    position: absolute;
+    right: 0;
+    transform: translateX(110%);
+    color: #00000000;
+}
+
+.detail-event__title i {
+    transform: translateX(0%);
+    margin-left: -25px;
+    opacity: 0;
+}
+
+.detail-event__title:hover i {
+    transform: translateX(150%);
+    opacity: 1;
+}
+
+.detail-event__bloc-img__content__icon-like {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.detail-event__bloc-img__content__creator a b,
+.detail-event__bloc-img__content__icon-like.user-favorite {
+    color: #3f80ff;
+}
+
+.detail-event__bloc-img__content__icon-like:hover {
+    color: #3f80ff !important;
+}
+
+.detail-event__bloc-img__content__creator a b:hover,
+.detail-event__bloc-img__content__icon-like.user-favorite:hover {
+    color: #ff2768 !important;
+}
+
+
+
+.detail-event::-webkit-scrollbar {
+    display: block;
+    border-radius: 20px;
+}
+
+.detail-event::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.detail-event::-webkit-scrollbar-track {
+    background: #b1b1b100;
+    border-radius: 10px;
+}
+
+.detail-event::-webkit-scrollbar-thumb {
+    background: #3f80ff;
+    border-radius: 10px;
+}
+
+.detail-event::-webkit-scrollbar-thumb:hover {
+    background: #3f80ffab;
+}

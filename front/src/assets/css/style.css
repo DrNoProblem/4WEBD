@@ -1,0 +1,455 @@
+* {
+    font-family: 'silkamedium';
+    color: lightgray;
+    transition: all 0.1s ease-in-out;
+}
+
+i {
+    user-select: none;
+}
+
+.test-b-r {
+    border-style: inset;
+    border: solid 1px #f00;
+}
+
+.test-b-g {
+    border-style: inset;
+    border: solid 1px #0f0;
+}
+
+.test-b-b {
+    border-style: inset;
+    border: solid 1px #00f;
+}
+
+img {
+    opacity: 1;
+}
+
+input {
+    outline: none;
+}
+
+body {
+    background: #3b4350;
+    color: lightgray;
+}
+
+.blue {
+    color: #0084ff;
+}
+
+.red {
+    color: #ff2768;
+}
+
+.cta {
+    border-radius: 4px;
+    padding: clamp(5px, 1vw, 10px) clamp(20px, 2.08vw, 35px);
+    text-transform: uppercase;
+    position: relative;
+    transition: all ease-out 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #3f80ff;
+    border: 2px solid #3f80ff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cta-red {
+    background: #ff2768;
+    border: 2px solid #ff2768;
+}
+
+.cta span {
+    position: relative;
+    transition: all ease-out 0.3s;
+    left: 0;
+}
+
+.cta:hover {
+    background: #3d7eff40;
+}
+
+.cta-red:hover {
+    background: #ff276840;
+}
+
+.header {
+    padding: 0 8vw;
+    width: calc(100% - 16vw);
+    user-select: none;
+    background-color: #252e37;
+    position: fixed;
+    margin: 0;
+    height: 6vh;
+    color: #fff;
+    border-bottom: 2px solid #ff2768;
+}
+
+.header__link:hover {
+    color: #ff2768;
+}
+
+.header__marge {
+    height: 6vh;
+}
+
+.card-event__create {
+    border: solid 6px #3f80ff40;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    scale: 0.5;
+    cursor: pointer;
+    padding: 13px;
+}
+
+.card-event__create:hover {
+    border: solid 6px #3f80ff;
+    background: linear-gradient(135deg, #ff276840 10%, #3f80ff40 90%);
+    scale: 0.55;
+}
+
+.card-event__create__item {
+    opacity: 0;
+    height: 245px;
+}
+
+.card-event__create::after,
+.card-event__create::before {
+    content: '';
+    width: 88px;
+    height: 8px;
+    background: #3c527c;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-event__create::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.card-event__create:hover::after,
+.card-event__create:hover::before {
+    background: #3f80ff;
+}
+
+.header__link__logo {
+    height: 6vh;
+    width: 9.9509vh;
+    background-image: url("https://media.discordapp.net/attachments/967347575390863360/1092234901635485756/title_header_red.png");
+    background-size: cover;
+}
+
+
+.not-found {
+    height: 80vh;
+}
+
+.edit__container__title {
+    padding: 5px 10px;
+    border-bottom: lightgray solid 2px;
+    color: lightgray;
+    cursor: default;
+}
+
+
+.home__widget-container__card__link__bloc-title {
+    width: 70%;
+    text-align: center;
+}
+
+.home__widget-container__card__link__bloc-title__title {
+    text-align: center;
+}
+
+.home__event-list__container {
+    overflow: hidden;
+}
+
+.external::before,
+.external::after {
+    content: '';
+    border-right: #d3d3d300 3px solid;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.external::after {
+    border-top: #d3d3d300 3px solid;
+    width: 10px;
+    height: 10px;
+}
+
+.external::before {
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg) translate(-35%, -15%);
+}
+
+.external:hover::after {
+    border-top: #d3d3d3 3px solid;
+    border-right: #d3d3d3 3px solid;
+}
+
+.external:hover::before {
+    border-right: #d3d3d3 3px solid;
+
+}
+
+.home {
+    overflow-y: scroll;
+    height: 94vh;
+    margin: 0 1vh;
+}
+
+
+.home::-webkit-scrollbar {
+    display: block;
+    border-radius: 20px;
+}
+
+.home::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.home::-webkit-scrollbar-track {
+    background: #b1b1b100;
+    border-radius: 10px;
+}
+
+.home::-webkit-scrollbar-thumb {
+    background: #3f80ff;
+    border-radius: 10px;
+}
+
+.home::-webkit-scrollbar-thumb:hover {
+    background: #3f80ffab;
+}
+
+.home__pres__logo-bg {
+    opacity: 0.25;
+}
+
+.home__pres__container {
+    height: 29vh;
+}
+
+.home__pres__container__title h2 a,
+.home__pres__container__title h1 a {
+    transition: none;
+}
+
+.cta-twitch {
+    background-color: #a970ff;
+    border: #a970ff solid 2px;
+}
+
+.cta-twitter {
+    background-color: #1a8cd8;
+    border: #1a8cd8 solid 2px;
+}
+
+.cta-discord {
+    background-color: #5662f6;
+    border: #5662f6 solid 2px;
+}
+
+
+.cta-twitch:hover {
+    background-color: #a970ff40;
+}
+
+.cta-twitter:hover {
+    background-color: #1a8cd840;
+}
+
+.cta-discord:hover {
+    background-color: #5662f640;
+}
+
+.user-page__container {
+    height: calc(94vh - 50px);
+}
+
+.user-page__container__titles-content h2 {
+    cursor: pointer;
+    user-select: none;
+}
+
+.user-page__container__titles-content h2:hover span {
+    color: #0084ff;
+}
+
+.user-page__container__contents .event-list {
+    height: 80vh;
+    padding: 0;
+}
+
+.user-page__container__contents .event-list__container,
+.user-page__container__contents .event-list__search {
+    width: 100%;
+    padding: 0;
+}
+
+
+.user-page__container__contents .event-list__team__title {
+    display: none !important;
+    ;
+}
+
+.user-page__container {
+    overflow: hidden;
+}
+
+.user-page__container__contents {
+    width: 200%;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-page__container.fav .user-page__container__contents {
+    transform: translateX(-50%);
+}
+
+.user-page__container.crea .user-page__container__contents {
+    transform: translateX(0%);
+}
+
+
+.user-page__container.fav .user-page__container__contents .user-page__container__content__creations,
+.user-page__container.crea .user-page__container__contents .user-page__container__content__favorites {
+    opacity: 0;
+}
+
+.user-page__container.crea .user-page__container__titles-content__title__crea span,
+.user-page__container.fav .user-page__container__titles-content__title__fav span {
+    color: #0084ff;
+    cursor: default;
+}
+
+
+.user-page__container.fav .user-page__container__titles-content__title__crea span,
+.user-page__container.crea .user-page__container__titles-content__title__fav span {
+    opacity: 0.25;
+}
+
+.user-page__container__content__favorites .card-event__create {
+    display: none
+}
+
+.user-page__user-info__container__main-img {
+    border-radius: 500px;
+    box-shadow: 0px 0px 20px 0px #252e37;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.user-page__user-info__container__main-img:hover {
+    filter: brightness(60%)
+}
+
+.user-page__user-info__container {
+    background: #252e37;
+    border-radius: 25px;
+    height: calc(92vh - 100px);
+}
+
+.user-page__user-info__container__stats span {
+    width: 75px;
+    height: 75px;
+    background: #3b4350;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.user-page__user-info__container__stats span:hover {
+    background: #0084ff;
+}
+
+.user-page__user-info__container__stats span:hover::after {
+    opacity: 1;
+    bottom: -10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-page__user-info__container__stats__created span::after,
+.user-page__user-info__container__stats__liked span::after {
+    position: absolute;
+    opacity: 0;
+    bottom: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+
+.user-page__user-info__container__stats__created span::after {
+    content: "events created";
+}
+
+.user-page__user-info__container__stats__liked span::after {
+    content: "total like";
+}
+
+.user-page__user-info__container__main-bg {
+    background: linear-gradient(315deg, #163958 0%, #4a2b66 100%);
+    border-radius: 15px 15px 0 0;
+}
+
+.user-settings__container__content__pseudo__title:hover,
+.user-settings__container__content__mail__title:hover,
+.user-settings__container__content__password__title:hover,
+.user-settings__container__content__delete__title:hover,
+.user-settings__container__content__pseudo__editing,
+.user-settings__container__content__mail__editing,
+.user-settings__container__content__password__editing,
+.user-settings__container__content__delete__editing {
+    background: #252e37;
+}
+
+.user-settings__container__content__pseudo__title,
+.user-settings__container__content__mail__title,
+.user-settings__container__content__password__title,
+.user-settings__container__content__delete__title,
+.user-settings__container__content__pseudo__editing,
+.user-settings__container__content__mail__editing,
+.user-settings__container__content__password__editing,
+.user-settings__container__content__delete__editing {
+    border-radius: 25px;
+}
+
+
+.user-settings__container__content__pseudo__editing input,
+.user-settings__container__content__mail__editing input,
+.user-settings__container__content__password__editing input {
+padding: 15px;
+background: #3b4350;
+border: #3b4350 2px solid;
+border-radius: 8px;
+width: calc(100% - 30px);
+}
+
+.user-settings__container {
+    margin-top: -50px
+}
+
+.user-settings__container__content__pseudo__title,
+.user-settings__container__content__mail__title,
+.user-settings__container__content__password__title,
+.user-settings__container__content__delete__title,
+.user-settings__container__content__pseudo__editing i,
+.user-settings__container__content__mail__editing i,
+.user-settings__container__content__password__editing i,
+.user-settings__container__content__delete__editing i{
+    cursor: pointer;
+}

@@ -1,0 +1,108 @@
+.user-window__bloc__in.error input,
+.user-window__bloc__up.error input {
+    border: #ff2768 2px solid;
+}
+
+.user-window__bloc__in.error p,
+.user-window__bloc__up.error p {
+    color: #ff2768;
+}
+
+.user-window__bloc__in input {
+    border: #3b4350 2px solid;
+}
+
+.user-window__bloc__up input {
+    border: #3b4350 2px solid;
+}
+
+.user-window {
+    background-color: #252e37;
+    border-radius: 15px;
+    overflow: hidden;
+    display: none !important;
+    border: #252e37 solid 1px;
+    min-width: 450px;
+}
+
+.user-window.active-in,
+.user-window.active-up {
+    display: flex !important;
+}
+
+.user-window__bloc {
+    width: 200%;
+    transition: 0.2s all ease-in-out;
+}
+
+.user-window.active-in .user-window__bloc {
+    transform: translateX(25%);
+}
+
+.user-window.active-up .user-window__bloc {
+    transform: translateX(-25%);
+}
+
+.user-window.active-up .user-window__bloc__in,
+.user-window.active-in .user-window__bloc__up {
+    opacity: 0;
+}
+
+
+.user-window__head__up-title,
+.user-window__head__in-title {
+    color: #3b4350;
+}
+
+.user-window__head__in-title:hover,
+.user-window__head__up-title:hover {
+    color: #3c527c;
+    cursor: pointer;
+}
+
+.user-window.active-up .user-window__head__up-title,
+.user-window.active-in .user-window__head__in-title {
+    color: #3f80ff;
+    cursor: default;
+}
+
+.user-window__close {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.user-window__close::after,
+.user-window__close::before {
+    content: "";
+    width: 16px;
+    height: 2px;
+    background: lightgrey;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+}
+
+
+.user-window__close::after {
+    transform: rotate(45deg);
+}
+
+.user-window__close::before {
+    transform: rotate(-45deg);
+}
+
+
+.user-window__close:hover::after,
+.user-window__close:hover::before {
+    background: #3f80ff;
+}
+
+.user-window__bloc__in__form input,
+.user-window__bloc__up__form input {
+    padding: 15px;
+    background: #3b4350;
+    border: #3b4350 2px solid;
+    border-radius: 8px;
+    width: calc(100% - 30px);
+}
