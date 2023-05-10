@@ -13,11 +13,10 @@ import User from "../../models/user";
 type Props = {
     event: Event
     clickcard: Function
-    clickfav: Function
     CurrentUser: User
 };
 
-const EventDetail: FunctionComponent<Props> = ({ event, clickcard, clickfav, CurrentUser }) => {
+const EventDetail: FunctionComponent<Props> = ({ event, clickcard, CurrentUser }) => {
 
 
     var [user, setUser] = useState(CurrentUser);
@@ -40,7 +39,7 @@ const EventDetail: FunctionComponent<Props> = ({ event, clickcard, clickfav, Cur
 
             {event ? (
                 <div className='detail-event__container flex-col w80 flex-center-x flex-center-y w95-tab t0'>
-                    
+
                 </div>
             ) : (
                 <div className='detail-event__not-found'>

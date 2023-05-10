@@ -7,11 +7,10 @@ import User from '../models/user';
 
 type Props = {
     eventlist: Array<Event>
-    clickfav: Function
     CurrentUser: User
 };
 
-const EventsList: FunctionComponent<Props> = ({ eventlist, clickfav, CurrentUser }) => {
+const EventsList: FunctionComponent<Props> = ({ eventlist, CurrentUser }) => {
 
 
     const [detailevent, setDetailevent] = useState(voidevent);
@@ -23,13 +22,9 @@ const EventsList: FunctionComponent<Props> = ({ eventlist, clickfav, CurrentUser
     return (
 
         <div>
-            {/*             <div onClick={() => incr(test)}>test</div> */}
             <EventsListInput
                 EventsIn={eventlist}
-                DomClass={"all-event"}
                 clickcard={openDetail}
-                clickfav={clickfav}
-                CurrentUser={CurrentUser}
             />
 
             {detailevent.classe !== "no-display" ? (
@@ -37,7 +32,6 @@ const EventsList: FunctionComponent<Props> = ({ eventlist, clickfav, CurrentUser
                 <EventDetail
                     event={detailevent}
                     clickcard={openDetail}
-                    clickfav={clickfav}
                     CurrentUser={CurrentUser}
                 />
 

@@ -66,21 +66,6 @@ const App: FunctionComponent = () => {
 
     };
 
-    const clickfav = (event_id: any, user_id: any, new_fav: number, new_array_fav: Array<string>) => {
-        var indexEvent = events.findIndex((obj: any) => obj._id === event_id);
-        if (indexEvent !== -1) {
-            events[indexEvent] = { ...events[indexEvent], favorite: new_fav };
-        }
-        var indexUser = users.findIndex((obj: any) => obj._id === user_id);
-        if (indexUser !== -1) {
-            users[indexUser] = { ...users[indexUser], eventFavorite: new_array_fav };
-        }
-        setEvents(events)
-        console.log(events)
-        setUsers(users)
-        console.log(users)
-        setUserLiked(new_array_fav)
-    }
 
     const clickCrea = (user_id: string, new_array_crea: Array<string>, result: Event) => {
         var indexUser = users.findIndex((obj: any) => obj._id === user_id);
@@ -112,13 +97,6 @@ const App: FunctionComponent = () => {
         }
     }
 
-
-    const team: any = []
-    events.forEach((event: any) => {
-        if (event._id === "644ea7dd085fce53b1a010b8" || event._id === "21" || event._id === "25" || event._id === "17") {
-            team.push(event)
-        }
-    })
 
     return (
         <Router>
@@ -160,9 +138,9 @@ const App: FunctionComponent = () => {
                 </nav>
                 <div className="header__marge"></div>
                 <Switch>
-                    <Route exact path="/" render={() => <Home eventlist={team} clickfav={clickfav} CurrentUser={currentUser} />} />
-                    <Route exact path="/events" render={() => <EventsList eventlist={events} clickfav={clickfav} CurrentUser={currentUser} />} />
-                    <Route path="/user-profile/:id" render={(props) => <UserProfile {...props} eventList={events} userList={users} clickfav={clickfav} CurrentUser={currentUser} />} />
+                    <Route exact path="/" render={() => <Home eventlist={events}  CurrentUser={currentUser} />} />
+                    <Route exact path="/events" render={() => <EventsList eventlist={events} CurrentUser={currentUser} />} />
+                    <Route path="/user-profile/:id" render={(props) => <UserProfile {...props} eventList={events} userList={users} CurrentUser={currentUser} />} />
                     <Route exact path="/user-settings/:id" render={(props) => <UserSettings {...props} usercalled={currentUser} requestUpdate={updateUser} requestDelete={DeleteUser} />} />
                     <Route exact path="/events/add" render={() => <EventAdd user={currentUser} clickCrea={clickCrea} />}></Route>
                     <Route component={PageNotFound}></Route>

@@ -21,14 +21,10 @@ const EventAdd: FunctionComponent<props> = ({ user, clickCrea }) => {
 
         const token = Cookies.get('token')
         eventCreate(newEvent.classe, newEvent.picture, newEvent.color, newEvent.object, newEvent.favorite, user._id, token).then(eventResult => {
-            console.log("eventResult")
-            console.log(eventResult)
             delete eventResult[0].__v
-            console.log('create result[0]')
-            console.log(eventResult[0])
             var new_array_crea: Array<string> = user.eventOwner
             new_array_crea.push(eventResult[0]._id)
-            userUpdateCrea(new_array_crea, token).then(userResult => {
+            userUpdateCrea(new_array_crea, token).then( () => {
                 clickCrea(user._id, new_array_crea, eventResult[0])
                 history.push(`../user-profile/${user._id}`)
             })

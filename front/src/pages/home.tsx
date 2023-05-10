@@ -1,19 +1,17 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../components/event-grid';
 import Event from '../models/event';
-import EventCard from '../components/event-card';
 import voidevent from '../models/void-event';
 import EventDetail from '../components/event-detail';
+import EventsListInput from '../components/event-list';
 import User from '../models/user';
 
 type Props = {
     eventlist: Array<Event>
-    clickfav: Function
     CurrentUser: User
 };
 
-const Home: FunctionComponent<Props> = ({ eventlist, clickfav, CurrentUser }) => {
+const Home: FunctionComponent<Props> = ({ eventlist, CurrentUser }) => {
 
 
     const [detailevent, setDetailevent] = useState(voidevent);
@@ -36,12 +34,9 @@ const Home: FunctionComponent<Props> = ({ eventlist, clickfav, CurrentUser }) =>
                     <ul className='home__event-list__container flex-wrap w100-tab w100 g15 pt15 pb15 flex-around relative'>
                         {eventlist.map((event: Event) => (
 
-                            <EventCard
-                                key={event._id}
-                                event={event}
-                                CurrentUser={CurrentUser}
+                            <EventsListInput
+                                EventsIn={eventlist}
                                 clickcard={openDetail}
-                                clickfav={clickfav}
                             />
 
                         ))}
@@ -60,7 +55,6 @@ const Home: FunctionComponent<Props> = ({ eventlist, clickfav, CurrentUser }) =>
                 <EventDetail
                     event={detailevent}
                     clickcard={openDetail}
-                    clickfav={clickfav}
                     CurrentUser={CurrentUser}
                 />
             ) : null}
