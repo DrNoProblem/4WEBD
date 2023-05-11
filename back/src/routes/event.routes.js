@@ -20,6 +20,7 @@ router.get(
 router.post(
   "/",
   authController.protect,
+  authController.restrictTo("orga"),
   eventController.createEvent
 );
 
@@ -28,12 +29,11 @@ router.put(
   "/:id",
   authController.protect,
   [
-    check("classe").notEmpty(),
+    check("name").notEmpty(),
     check("picture").notEmpty(),
-    check("color").notEmpty(),
-    check("object").notEmpty(),
-    check("favorite").notEmpty(),
-    check("creator").notEmpty(),
+    check("maxPlace").notEmpty(),
+    check("dispoPlace").notEmpty(),
+    check("usersReserve").notEmpty()
   ],
   (req, res, next) => {
     const errors = validationResult(req);
@@ -42,6 +42,8 @@ router.put(
     }
     next();
   },
+  authController.protect,
+  authController.restrictTo("orga"),
   eventController.updateEvent
 );
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({  
 
-  classe: {
+  name: {
     type: String,
     required: true,
     allowNull: false
@@ -12,25 +12,19 @@ const eventSchema = new mongoose.Schema({
     required: true,
     allowNull: false
   },
-  color: {
-    type: Array,
-    required: true,
-    allowNull: false,
-  },
-  object: {
-    type: Array,
-    required: true,
-    allowNull: false,
-  },
-  favorite: {
+  maxPlace: {
     type: Number,
-    required: false,
-    allowNull: false
-  },
-  creator: {
-    type: String,
     required: true,
-    allowNull: false
+    allowNull: false,
+  },
+  dispoPlace: {
+    type: Number,
+    required: true,
+    allowNull: false,
+  },
+  usersReserve: {
+    type: Array,
+    required: false
   }
 
 });

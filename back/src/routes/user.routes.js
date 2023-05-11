@@ -9,12 +9,12 @@ router.post(
   "/signup",
   [
     body("email").isEmail().withMessage("Email must be valid"),
-    body("pseudo").notEmpty().withMessage("Pseudo is required"),
+    body("name").notEmpty().withMessage("Pseudo is required"),
     body("password")
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters"),
     body("role")
-      .isIn(["user", "admin"])
+      .isIn(["user", "admin", "orga"])
       .withMessage("Role must be either user or admin"),
   ],
   authController.signup
@@ -92,8 +92,8 @@ router.patch(
       .withMessage("Password must be at least 8 characters"),
     body("role")
       .optional()
-      .isIn(["user", "admin"])
-      .withMessage("Role must be either user or admin"),
+      .isIn(["user", "admin", "orga"])
+      .withMessage("Role must be either user admin or organisator"),
   ],
   authController.protect,
   authController.restrictTo("admin"),

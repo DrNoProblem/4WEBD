@@ -25,39 +25,31 @@ exports.getEventById = async (req, res) => {
 
 // Create new Event
 exports.createEvent = [
-  body('classe')
-    .notEmpty().withMessage('classe is required.')
-    .isString().withMessage('classe should be a string.'),
+  body('name')
+    .notEmpty().withMessage('name is required.')
+    .isString().withMessage('name should be a string.'),
   body('picture')
     .notEmpty().withMessage('picture is required.')
     .isURL().withMessage('picture should be a URL.'),
-  body('color')
-    .notEmpty().withMessage('color is required.')
-    .isArray().withMessage('color should be a string.'),
-  body('object')
-    .notEmpty().withMessage('object is required.')
-    .isArray().withMessage('object should be a string.'),
-  body('favorite')
+  body('maxPlace')
     .notEmpty().withMessage('favorite is required.')
     .isInt().withMessage('favorite should be a number.'),
-  body('creator')
-    .notEmpty().withMessage('creator is required.')
-    .isString().withMessage('creator should be a string.'),
+  body('dispoPlace')
+    .notEmpty().withMessage('dispoPlace is required.')
+    .isInt().withMessage('dispoPlace should be a string.'),
 
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { classe, picture, color, object, favorite, creator } = req.body;
+    const { name, picture, maxPlace, dispoPlace } = req.body;
     try {
       const hotel = await Event.create({
-        classe,
+        name,
         picture,
-        color,
-        object,
-        favorite,
-        creator,
+        maxPlace,
+        dispoPlace,
       });
       res.status(201).json(hotel);
     } catch (error) {
@@ -69,18 +61,17 @@ exports.createEvent = [
 // Update Event by id
 exports.updateEvent = async (req, res) => {
   const { id } = req.params;
-  const { classe, picture, color, object, favorite, creator } = req.body;
+  const { name, picture, maxPlace, dispoPlace, usersReserve } = req.body;
 
   try {
     const event = await Event.findByIdAndUpdate(
       id,
       {
-        classe,
+        name,
         picture,
-        color,
-        object,
-        favorite,
-        creator,
+        maxPlace,
+        dispoPlace,
+        usersReserve,
       },
       { new: true }
     );
