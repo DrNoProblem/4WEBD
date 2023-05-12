@@ -9,7 +9,7 @@ router.post(
   "/signup",
   [
     body("email").isEmail().withMessage("Email must be valid"),
-    body("name").notEmpty().withMessage("Pseudo is required"),
+    body("name").notEmpty().withMessage("name is required"),
     body("password")
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters"),
@@ -32,7 +32,7 @@ router.post(
   authController.login
 );
 
-//? private route for logging out
+//! private route for logging out
 router.get(
   "/logout",
   authController.logout
@@ -45,7 +45,7 @@ router.get(
   userController.getCurrentUser
 );
 
-//! private route for getting current user's info
+//! public route for getting current user's info
 router.get(
   "/:id",
   userController.getUserbyId
@@ -56,11 +56,17 @@ router.patch(
   "/updateMe",
   [
     body("email").optional().isEmail().withMessage("Email must be valid"),
-    body("pseudo").optional().notEmpty().withMessage("Pseudo is required"),
-    body("password")
-      .optional()
+    body("name").optional().notEmpty().withMessage("name is required"),
+    body("password").optional()
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters"),
+    body("payement").optional(),
+    body("payement[1]").optional()
+      .isLength({ equal: 16 })
+      .withMessage("card numbers must be at equal 16 characters"),
+    body("payement[2]").optional()
+      .isLength({ equal: 3 })
+      .withMessage("card numbers must be at equal 3 characters"),
   ],
   authController.protect,
   userController.updateCurrentUser
@@ -85,7 +91,7 @@ router.patch(
   [
     param("id").isMongoId().withMessage("Invalid user ID"),
     body("email").optional().isEmail().withMessage("Email must be valid"),
-    body("pseudo").optional().notEmpty().withMessage("Pseudo is required"),
+    body("name").optional().notEmpty().withMessage("name is required"),
     body("password")
       .optional()
       .isLength({ min: 8 })

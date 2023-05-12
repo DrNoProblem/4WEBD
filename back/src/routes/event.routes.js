@@ -16,7 +16,7 @@ router.get(
   eventController.getEventById
 );
 
-//! user route to create an Event
+//! orga route to create an Event
 router.post(
   "/",
   authController.protect,
@@ -24,7 +24,7 @@ router.post(
   eventController.createEvent
 );
 
-//! user route to update Event information
+//! private route to update Event information
 router.put(
   "/:id",
   authController.protect,
@@ -33,7 +33,6 @@ router.put(
     check("picture").notEmpty(),
     check("maxPlace").notEmpty(),
     check("dispoPlace").notEmpty(),
-    check("usersReserve").notEmpty()
   ],
   (req, res, next) => {
     const errors = validationResult(req);
@@ -43,14 +42,14 @@ router.put(
     next();
   },
   authController.protect,
-  authController.restrictTo("orga"),
   eventController.updateEvent
 );
 
-//! user route to delete an Event
+//! orga route to delete an Event
 router.delete(
   "/:id",
   authController.protect,
+  authController.restrictTo("orga"),
   eventController.deleteEvent
 );
 

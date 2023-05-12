@@ -38,6 +38,18 @@ exports.createEvent = [
     .notEmpty().withMessage('dispoPlace is required.')
     .isInt().withMessage('dispoPlace should be a string.'),
 
+
+  (req, res, next) => {
+    const { maxPlace, dispoPlace } = req.body;
+    if (parseInt(maxPlace) < parseInt(dispoPlace)) {
+      return res.status(400).json({ message: 'maxPlace cannot be less than dispoPlace.' });
+    }
+    if (parseInt(dispoPlace) < 0) {
+      return res.status(400).json({ message: 'dispoPlace cannot be negative.' });
+    }
+    next();
+  },
+
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -62,6 +74,15 @@ exports.createEvent = [
 exports.updateEvent = async (req, res) => {
   const { id } = req.params;
   const { name, picture, maxPlace, dispoPlace, usersReserve } = req.body;
+
+
+  (req, res, next) => {
+    const { dispoPlace } = req.body;
+    if (parseInt(dispoPlace) < 0) {
+      return res.status(400).json({ message: 'This event is full booked.' });
+    }
+    next();
+  }
 
   try {
     const event = await Event.findByIdAndUpdate(

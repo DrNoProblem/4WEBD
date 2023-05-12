@@ -21,21 +21,20 @@ exports.getUserbyId = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-  
+
 
 exports.updateCurrentUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
-    const { email, pseudo, password, eventOwner, eventFavorite  } = req.body;
+    const { email, name, password, payement, reserv, eventOwner } = req.body;
     if (email) user.email = email;
-    if (pseudo) user.pseudo = pseudo;
-    if (password) {
-      user.password = await bcrypt.hash(password, 10);
-    }
+    if (name) user.name = name;
+    if (password) user.password = await bcrypt.hash(password, 10);
+    if (payement) user.payement = await encryptPayments(payement);
+    if (reserv) user.reserv = reserv;
     if (eventOwner) user.eventOwner = eventOwner;
-    if (eventFavorite) user.eventFavorite = eventFavorite;
     await user.save();
-    res.json({ message: "User updated successfully" });
+    res.json({ message: `User ${user.name} updated successfully` });
   } catch (err) {
     next(err);
   }
@@ -44,7 +43,7 @@ exports.updateCurrentUser = async (req, res, next) => {
 exports.deleteCurrentUser = async (req, res, next) => {
   try {
     await User.findByIdAndDelete(req.user._id);
-    res.json({ message: "User deleted successfully" });
+    res.json({ message: `User ${user.name} deleted successfully` });
   } catch (err) {
     next(err);
   }
@@ -62,7 +61,7 @@ exports.getAllUsers = async (req, res, next) => {
 exports.updateUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { email, pseudo, password, role, eventOwner, eventFavorite } = req.body;
+    const { email, name, password, role, payement, reserv, eventOwner } = req.body;
 
     const user = await User.findById(id);
     if (!user) {
@@ -70,16 +69,17 @@ exports.updateUser = async (req, res, next) => {
     }
 
     if (email) user.email = email;
-    if (pseudo) user.pseudo = pseudo;
+    if (name) user.name = name;
     if (password) {
       user.password = await bcrypt.hash(password, 10);
     }
     if (role) user.role = role;
+    if (payement) user.payement = await encryptPayments(payment);
+    if (reserv) user.reserv = reserv;
     if (eventOwner) user.eventOwner = eventOwner;
-    if (eventFavorite) user.eventFavorite = eventFavorite;
     await user.save();
 
-    res.json({ message: "User updated successfully" });
+    res.json({ message: `User ${user.name} updated successfully` });
   } catch (err) {
     next(err);
   }
@@ -92,8 +92,17 @@ exports.deleteUser = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    res.json({ message: "User deleted successfully" });
+    res.json({ message: `User ${user.name} deleted successfully` });
   } catch (err) {
     next(err);
   }
 };
+
+async function encryptPayments(payments) {
+  for (let i = 0; i < payments.length; i++) {
+    const payment = payments[i];
+    const hashedPayment = await bcrypt.hash(payment, 10);
+    payments[i] = hashedPayment;
+  }
+  return payments;
+}

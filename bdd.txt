@@ -11,7 +11,12 @@ user role = [
     "password": string,
     "role": string,
     "payement": array <string | number >,
-        => [ "cardName": string, "cardnumber": number, "cardCtypto": number, "cardDate": Date ]
+        => [ 
+                "cardName": string, 
+                "cardnumber": number, 
+                "cardCtypto": number, 
+                "cardDate": Date 
+            ]
     "reserv": array <number | string>
         => [ "place": number , "event": string ]
 ]
