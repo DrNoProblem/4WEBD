@@ -15,6 +15,7 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
     const [EditMail, setEditMail] = useState(true);
     const [EditPassWord, setEditPassWord] = useState(true);
     const [EditDelete, setEditDelete] = useState(true);
+    const [EditPayemnt, setEditPayemnt] = useState(true);
 
     const [user, setUser] = useState<User>(usercalled);
 
@@ -29,7 +30,7 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
     }
 
 
-    var fieldToSendPsw: any = {'password': "", 'newpassword': ""}
+    var fieldToSendPsw: any = { 'password': "", 'newpassword': "" }
     const handleInputChangePassword = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
         fieldToSendPsw = { ...fieldToSendPsw, [type]: e.target.value };
     }
@@ -58,7 +59,7 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
         <div className='user-settings pl50'>
 
             <div className='relative mt50'>
-                <Link to={`/user-profile/${match.params.id}`} className="cta">
+                <Link to={`/user-profile/${user._id}`} className="cta">
                     <span>
                         Back to Profile
                     </span>
@@ -69,18 +70,25 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
                 <div className="user-settings__container__content flex-col g15">
                     <div className="user-settings__container__content__pseudo">
                         {EditPseudo ? (
-                            <div className="user-settings__container__content__pseudo__title p25" onClick={() => { setEditPseudo(false); setEditMail(true); setEditPassWord(true); setEditDelete(true) }}>
+                            <div className="user-settings__container__content__pseudo__title p25"
+                                onClick={() => {
+                                    setEditPseudo(false);
+                                    setEditMail(true);
+                                    setEditPassWord(true);
+                                    setEditDelete(true);
+                                    setEditPayemnt(true)
+                                }}>
                                 <h2 className='bold blue m0 ml15 flex-bet flex-bet'>Pseudo :
                                     <i className='material-icons ml10 blue'>edit</i>
                                 </h2>
-                                <p className='m0 mt15'>{user.pseudo}</p>
+                                <p className='m0 mt15'>{user.name}</p>
                             </div>
                         ) : (
                             <div className="user-settings__container__content__pseudo__editing p25 flex-col g10">
                                 <h2 className='bold blue m0 ml15 flex-bet'>New pseudo :
                                     <i className='material-icons ml10' onClick={() => setEditPseudo(true)}>close</i>
                                 </h2>
-                                <input type="text" placeholder={user.pseudo} onChange={e => handleInputChange(e, 'pseudo')} />
+                                <input type="text" placeholder={` ${user.name}`} onChange={e => handleInputChange(e, 'pseudo')} />
                                 <div className='mt10 ml10'>
                                     <div className="cta" onClick={() => update(fieldToSend)}>
                                         <span>
@@ -93,7 +101,14 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
                     </div>
                     <div className="user-settings__container__content__mail">
                         {EditMail ? (
-                            <div className="user-settings__container__content__mail__title p25" onClick={() => { setEditPseudo(true); setEditMail(false); setEditPassWord(true); setEditDelete(true) }}>
+                            <div className="user-settings__container__content__mail__title p25"
+                                onClick={() => {
+                                    setEditPseudo(true);
+                                    setEditMail(false);
+                                    setEditPassWord(true);
+                                    setEditDelete(true);
+                                    setEditPayemnt(true)
+                                }}>
                                 <h2 className='bold blue m0 ml15 flex-bet'>Email :
                                     <i className='material-icons ml10 blue'>edit</i>
                                 </h2>
@@ -104,7 +119,7 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
                                 <h2 className='bold blue m0 ml15 flex-bet'>New email :
                                     <i className='material-icons ml10' onClick={() => setEditMail(true)}>close</i>
                                 </h2>
-                                <input type="text" placeholder={user.email} onChange={e => handleInputChange(e, 'email')} />
+                                <input type="text" placeholder={` ${user.email}`} onChange={e => handleInputChange(e, 'email')} />
                                 <div className='mt10 ml10'>
                                     <div className="cta" onClick={() => update(fieldToSend)}>
                                         <span>
@@ -117,7 +132,14 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
                     </div>
                     <div className="user-settings__container__content__password">
                         {EditPassWord ? (
-                            <div className="user-settings__container__content__password__title p25" onClick={() => { setEditPseudo(true); setEditMail(true); setEditPassWord(false); setEditDelete(true) }}>
+                            <div className="user-settings__container__content__password__title p25"
+                                onClick={() => {
+                                    setEditPseudo(true);
+                                    setEditMail(true);
+                                    setEditPassWord(false);
+                                    setEditDelete(true);
+                                    setEditPayemnt(true)
+                                }}>
                                 <h2 className='bold blue m0 ml15 flex-bet'>Password :
                                     <i className='material-icons ml10 blue'>edit</i>
                                 </h2>
@@ -142,18 +164,68 @@ const UserSettings: FunctionComponent<Props> = ({ match, usercalled, requestUpda
                         )}
                     </div>
 
+
+
+                    <div className="user-settings__container__content__payement">
+                        {EditPayemnt ? (
+                            <div className="user-settings__container__content__payement__title p25"
+                                onClick={() => {
+                                    setEditPseudo(true);
+                                    setEditMail(true);
+                                    setEditPassWord(true);
+                                    setEditDelete(true);
+                                    setEditPayemnt(false)
+                                }}>
+                                <h2 className='bold blue m0 ml15 flex-bet'>Payement informations :
+                                    <i className='material-icons ml10 blue'>edit</i>
+                                </h2>
+                                <p className='m0 mt15'>************</p>
+                            </div>
+                        ) : (
+                            <div className="user-settings__container__content__payement__editing p25 flex-col g10">
+
+                                <h2 className='bold blue m0 ml15 flex-bet mb10'>New payement informations :
+                                    <i className='material-icons ml10' onClick={() => setEditPayemnt(true)}>close</i>
+                                </h2>
+
+                                <input type="text" placeholder=' card name' />
+                                <input type="text" placeholder=' 16 card numbers ' />
+
+                                <div className='flex-row flex-bet g10'>
+                                    <input type="text" className='w20' placeholder=' date ' />
+                                    <input type="text" className='w20' placeholder=' CVC ' />
+                                </div>
+
+                                <div className='mt10 ml10'>
+                                    <div className="cta" onClick={() => checkPassord(fieldToSendPsw)}>
+                                        <span>
+                                            Save
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="user-settings__container__content__delete">
 
                         {EditDelete ? (
-                            <div className="user-settings__container__content__delete__title p25" onClick={() => { setEditPseudo(true); setEditMail(true); setEditPassWord(true); setEditDelete(false) }}>
-                                <h2 className='bold red m0 ml15 flex-bet'>Delete :
+                            <div className="user-settings__container__content__delete__title p25"
+                                onClick={() => {
+                                    setEditPseudo(true);
+                                    setEditMail(true);
+                                    setEditPassWord(true);
+                                    setEditDelete(false);
+                                    setEditPayemnt(true)
+                                }}>
+                                <h2 className='bold red m0 ml15 flex-bet'>Delete account :
                                     <i className='material-icons ml10 red' >delete</i>
                                 </h2>
                             </div>
                         ) : (
 
                             <div className="user-settings__container__content__delete__editing p25">
-                                <h2 className='bold red m0 ml15 flex-bet'>Delete :
+                                <h2 className='bold red m0 ml15 flex-bet'>Delete account :
                                     <i className='material-icons ml10' onClick={() => { setEditDelete(true) }}>close</i>
                                 </h2>
                                 <div className='mt10 ml10'>

@@ -2,17 +2,16 @@ async function eventCreate(
     name: string,
     picture: string,
     maxPlace: number,
-    dispoPlace: number,
-    usersReserve: Array<string>,
+    locality: string,
+    cost: number,
     token: string | undefined) {
     var data: any = []
-    const response = await fetch("http://localhost:4000/events/", {
+    const response = await fetch("http://localhost:4000/events", {
         method: "POST",
-        body: JSON.stringify({ name, picture, maxPlace, dispoPlace, usersReserve }),
+        body: JSON.stringify({ name, picture, maxPlace, locality, cost }),
         headers: { "Content-Type": "application/json", "authorization": "Bearer " + token }
     });
-    console.log(JSON.stringify({ name, picture, maxPlace, dispoPlace, usersReserve }))
-    data = [await response.json(), await response.status];
+    data = [await response.json(), response.status];
     return data
 }
 

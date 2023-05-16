@@ -1,15 +1,9 @@
 .edit-form__container__types__colors__color__info,
 .edit-form__container__types__equips__equip__info {
-    width: 100px;
+    width: 125px;
     text-align: end;
 }
 
-.edit-form__container__types__equips__title,
-.edit-form__container__types__colors__title,
-.edit-form__container__picture__title,
-.edit-form__container__classes__title {
-    color: #0084ff;
-}
 
 .edit-form__container__types__colors__color,
 .edit-form__container__types__equips__equip {
@@ -24,6 +18,7 @@
     border: #252e37;
     padding: 8px;
     border-radius: 8px;
+    width: auto;
 }
 
 .edit-form__container__classes select {
@@ -39,8 +34,9 @@
 
 .edit-form__container__picture {
     width: 100%;
+    text-align: end;
 }
 
 .edit-form__container__picture input{
-    width: calc(100% - 16px);
+    width: 75%;
 }

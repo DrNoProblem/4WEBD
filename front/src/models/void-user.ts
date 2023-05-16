@@ -1,13 +1,14 @@
 import User from './user';
 
 export const voiduser: User = {
-    'pseudo': "no-display",
-    'email': "",
-    'password': "",
-    'eventFavorite': [""],
-    'eventOwner': [""],
-    'role': "",
-    '_id': ""
+    "name": "",
+    "email": "",
+    "password": "",
+    "role": "void",
+    "payement": [],
+    "reserv": [],
+    "eventOwner": [],
+    "_id": ""
 }
 
 export default voiduser;

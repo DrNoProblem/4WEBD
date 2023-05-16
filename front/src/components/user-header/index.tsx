@@ -55,7 +55,7 @@ const UserHeader: FunctionComponent<Props> = ({testmaxleroux}) => {
     const checkinfo = (objectFieldSignUp:any) => {
         console.log(objectFieldSignUp);
         if (objectFieldSignUp.password === objectFieldSignUp.validpassword) { 
-            register(objectFieldSignUp.email, objectFieldSignUp.pseudo, objectFieldSignUp.password, "user").then(result => {
+            register(objectFieldSignUp.email, objectFieldSignUp.name, objectFieldSignUp.password, "user").then(result => {
                 console.log(result);
                 Cookies.set('token', result[0].token, { expires: 30 });
                 openUserSign('close');
@@ -81,7 +81,7 @@ const UserHeader: FunctionComponent<Props> = ({testmaxleroux}) => {
 
             <div className="user-window__bloc flex-start-x flex-row">
 
-                <div className="user-window__bloc__in flex-col g15 flex-center w100">
+                <form className="user-window__bloc__in flex-col g15 flex-center w100">
                     <div className='user-window__bloc__in__form flex-col flex-center-y flex-start-x w80'>
                         <p className='user-window__bloc__in__form__title b10'>Email</p>
                         <input className='user-window__bloc__in__form__input w100' type="text" onChange={(e) => setEmail(e.target.value)}/>
@@ -96,9 +96,9 @@ const UserHeader: FunctionComponent<Props> = ({testmaxleroux}) => {
                             </span>
                         </div>
                     </div>
-                </div>
+                </form>
 
-                <div className="user-window__bloc__up flex-col g15 flex-center w100">
+                <form className="user-window__bloc__up flex-col g15 flex-center w100">
                     <div className='user-window__bloc__up__form flex-col flex-center-y flex-start-x w80'>
                         <p className='user-window__bloc__up__form__title b10'>Pseudo</p>
                         <input className='user-window__bloc__up__form__input w100' type="text" onChange={(e) => handleInputChange(e,"pseudo")}/>
@@ -117,7 +117,7 @@ const UserHeader: FunctionComponent<Props> = ({testmaxleroux}) => {
                             </span>
                         </div>
                     </div>
-                </div>
+                </form>
 
             </div>
 

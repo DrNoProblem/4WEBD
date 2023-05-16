@@ -44,6 +44,10 @@ body {
     color: #ff2768;
 }
 
+.grey {
+    color: grey
+}
+
 .cta {
     border-radius: 4px;
     padding: clamp(5px, 1vw, 10px) clamp(20px, 2.08vw, 35px);
@@ -60,11 +64,17 @@ body {
     font-size: 14px;
 }
 
+
+.cta-grey {
+    background: #3b4350;
+    border: 2px solid #3b4350;
+    cursor:context-menu;
+}
+
 .cta-red {
     background: #ff2768;
     border: 2px solid #ff2768;
 }
-
 .cta span {
     position: relative;
     transition: all ease-out 0.3s;
@@ -78,7 +88,9 @@ body {
 .cta-red:hover {
     background: #ff276840;
 }
-
+.cta-grey:hover {
+    background: #3b4350;
+}
 .header {
     padding: 0 8vw;
     width: calc(100% - 16vw);
@@ -409,10 +421,12 @@ body {
 .user-settings__container__content__pseudo__title:hover,
 .user-settings__container__content__mail__title:hover,
 .user-settings__container__content__password__title:hover,
+.user-settings__container__content__payement__title:hover,
 .user-settings__container__content__delete__title:hover,
 .user-settings__container__content__pseudo__editing,
 .user-settings__container__content__mail__editing,
 .user-settings__container__content__password__editing,
+.user-settings__container__content__payement__editing,
 .user-settings__container__content__delete__editing {
     background: #252e37;
 }
@@ -420,10 +434,12 @@ body {
 .user-settings__container__content__pseudo__title,
 .user-settings__container__content__mail__title,
 .user-settings__container__content__password__title,
+.user-settings__container__content__payement__title,
 .user-settings__container__content__delete__title,
 .user-settings__container__content__pseudo__editing,
 .user-settings__container__content__mail__editing,
 .user-settings__container__content__password__editing,
+.user-settings__container__content__payement__editing,
 .user-settings__container__content__delete__editing {
     border-radius: 25px;
 }
@@ -431,7 +447,8 @@ body {
 
 .user-settings__container__content__pseudo__editing input,
 .user-settings__container__content__mail__editing input,
-.user-settings__container__content__password__editing input {
+.user-settings__container__content__password__editing input,
+.user-settings__container__content__payement__editing input {
 padding: 15px;
 background: #3b4350;
 border: #3b4350 2px solid;
@@ -447,6 +464,8 @@ width: calc(100% - 30px);
 .user-settings__container__content__mail__title,
 .user-settings__container__content__password__title,
 .user-settings__container__content__delete__title,
+.user-settings__container__content__payement__title,
+.user-settings__container__content__payement__editing i,
 .user-settings__container__content__pseudo__editing i,
 .user-settings__container__content__mail__editing i,
 .user-settings__container__content__password__editing i,

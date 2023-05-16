@@ -32,26 +32,20 @@ const Home: FunctionComponent<Props> = ({ eventlist, CurrentUser }) => {
                 <div className="home__event-list flex-col w60 mlrauto">
                     <h1 className='home__event-list__team__title w100 mt50 relative'>List event :</h1>
                     <ul className='home__event-list__container flex-wrap w100-tab w100 g15 pt15 pb15 flex-around relative'>
-                        {eventlist.map((event: Event) => (
 
                             <EventsListInput
                                 EventsIn={eventlist}
                                 clickcard={openDetail}
+                                CurrentUser={CurrentUser}
                             />
 
-                        ))}
                     </ul>
-                    <Link to={"/events"} className='mb15'>
-                        <div className="cta">
-                            <span>See all events</span>
-                        </div>
-                    </Link>
 
                 </div>
 
 
             </div>
-            {detailevent.classe !== "no-display" ? (
+            {detailevent !== voidevent ? (
                 <EventDetail
                     event={detailevent}
                     clickcard={openDetail}

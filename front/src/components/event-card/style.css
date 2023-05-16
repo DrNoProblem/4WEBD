@@ -4,11 +4,23 @@
     transition: all 0.2s ease-in-out;
     user-select: none;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.card-event__name {
+    opacity: 0;
+    background-color: #3f80ff;
+
+}
+
+.card-event:hover .card-event__name {
+    opacity: 1;
 }
 
 .card-event:hover {
+    border-style: inset;
     border: solid 2px #3f80ff;
-    background: #252e37;
+    background: #3f80ff;
     scale: 1.025;
 }
 

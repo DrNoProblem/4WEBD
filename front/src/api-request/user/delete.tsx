@@ -1,7 +1,7 @@
 
-async function DeleteUserById(token:string) {
+async function DeleteUser(token:string, id:string) {
     var data: any = []
-    const response = await fetch(`http://localhost:4000/users/deleteMe`, {
+    const response = await fetch(`http://localhost:4000/users/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -12,4 +12,4 @@ async function DeleteUserById(token:string) {
     return data
 }
 
-export default DeleteUserById;
+export default DeleteUser;

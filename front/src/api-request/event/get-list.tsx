@@ -4,7 +4,7 @@ async function getEventsList() {
     const response = await fetch("http://localhost:4000/events", {
         method: "GET",
     });
-    data = [await response.json(), await response.status];
+    data = [await response.json(), response.status];
     return data
 }
 

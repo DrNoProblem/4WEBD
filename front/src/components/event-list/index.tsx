@@ -8,9 +8,10 @@ import User from '../../models/user';
 type Props = {
     EventsIn: Array<Event>
     clickcard: Function
+    CurrentUser: User
 };
 
-const eventsListInput: FunctionComponent<Props> = ({ EventsIn, clickcard}) => {
+const eventsListInput: FunctionComponent<Props> = ({ EventsIn, clickcard, CurrentUser}) => {
 
 
 
@@ -26,10 +27,10 @@ const eventsListInput: FunctionComponent<Props> = ({ EventsIn, clickcard}) => {
 
 
         // eslint-disable-next-line no-useless-concat
-        <div className={'event-list flex-center-x flex-col pl50 pr50 '} >
+        <div className={'event-list flex-center-x flex-col pl50 pr50 pt10'} >
 
 
-            <ul className='event-list__container flex-wrap w100-tab w80 g15 pb50 flex-center'>
+            <ul className='event-list__container flex-wrap w100-tab g15 pb50 flex-center'>
                 {events.map(event => (
                     <EventCard 
                     key={event._id} 
@@ -37,11 +38,14 @@ const eventsListInput: FunctionComponent<Props> = ({ EventsIn, clickcard}) => {
                     clickcard={clickcard}
                     />
                 ))}
+                {CurrentUser.role === 'orga' ? (
+                    
                 <li className='card-event__create flex-row flex-center-y relative'>
                     <Link to='/events/add'>
                         <img className='card-event__create__item' src='https://media.discordapp.net/attachments/967347575390863360/1097519818581737542/image.png' alt='event'></img>
                     </Link>
                 </li>
+                ) : null}
             </ul>
 
 
