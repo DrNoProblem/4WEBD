@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("./user.controller");
-/* const authController = require("../controllers/auth.controller"); */
+const authController = require("./auth.controller");
 const { body, param } = require("express-validator");
 
 //! public route for creating a new user
@@ -17,7 +17,7 @@ router.post(
       .isIn(["user", "admin", "orga"])
       .withMessage("Role must be either user or admin"),
   ],
-/*   authController.signup */
+  authController.signup
 );
 
 //! public route for logging in
@@ -29,19 +29,19 @@ router.post(
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters"),
   ],
-/*   authController.login */
+  authController.login
 );
 
 //! private route for logging out
 router.get(
   "/logout",
-/*   authController.logout */
+  authController.logout
 );
 
 //!! private route for getting current user's info
 router.get(
   "/me",
-/*   authController.protect, */
+  authController.protect,
   userController.getCurrentUser
 );
 
@@ -68,14 +68,14 @@ router.patch(
       .isLength({ equal: 3 })
       .withMessage("card numbers must be at equal 3 characters"),
   ],
-/*   authController.protect, */
+  authController.protect,
   userController.updateCurrentUser
 );
 
 //! private route for deleting current user's account
 router.delete(
   "/deleteMe",
-/*   authController.protect, */
+  authController.protect,
   userController.deleteCurrentUser
 );
 
@@ -101,8 +101,8 @@ router.patch(
       .isIn(["user", "admin", "orga"])
       .withMessage("Role must be either user admin or organisator"),
   ],
-/*   authController.protect,
-  authController.restrictTo("admin"), */
+  authController.protect,
+  authController.restrictTo("admin"),
   userController.updateUser
 );
 
@@ -110,8 +110,8 @@ router.patch(
 router.delete(
   "/:id",
   param("id").isMongoId().withMessage("Invalid user ID"),
-/*   authController.protect,
-  authController.restrictTo("admin"), */
+  authController.protect,
+  authController.restrictTo("admin"),
   userController.deleteUser
 );
 

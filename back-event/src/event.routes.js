@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const eventController = require("./event.controller");
-/* const authController = require("./auth.controller"); */
+const authController = require("./auth.controller");
 const { check, validationResult } = require("express-validator");
 
 //! public route to get all the Events
@@ -21,10 +21,8 @@ router.post(
   "/",
 
 
-/*   authController.protect,
-  authController.restrictTo("orga"), */
-
-
+  authController.protect,
+  authController.restrictTo("orga"),
   eventController.createEvent
 );
 
@@ -45,18 +43,15 @@ router.put(
     next();
   },
 
-
-/*   authController.protect, */
-
-
+  authController.protect,
   eventController.updateEvent
 );
 
 //! orga route to delete an Event
 router.delete(
   "/:id",
-/*   authController.protect,
-  authController.restrictTo("orga"), */
+  authController.protect,
+  authController.restrictTo("orga"),
   eventController.deleteEvent
 );
 

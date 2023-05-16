@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const payementController = require("./payement.controller");
-/* const authController = require("./auth.controller"); */
+const authController = require("./auth.controller");
 const { check, validationResult } = require("express-validator");
 
 
 //! private route to get an Payement by id
 router.get(
     "/:id",
-/*     authController.protect, */
+    authController.protect,
     payementController.getPayementById
 );
 
@@ -16,7 +16,7 @@ router.get(
 //! private route to create an Payement
 router.post(
     "/",
-/*     authController.protect, */
+    authController.protect,
     payementController.createPayement
 );
 
@@ -36,14 +36,14 @@ router.put(
         }
         next();
     },
-/*     authController.protect, */
+    authController.protect,
     payementController.updatePayement
 );
 
 //! private route to delete an Payement
 router.delete(
     "/:id",
-/*     authController.protect, */
+    authController.protect,
     payementController.deletePayement
 );
 
