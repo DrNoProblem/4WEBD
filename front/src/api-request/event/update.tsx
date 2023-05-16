@@ -11,7 +11,7 @@ async function eventUpdate(
     var data: any = []
     const response = await fetch("http://localhost:4000/events/" + _id, {
         method: "PUT",
-        body: JSON.stringify({ name, picture, maxPlace, dispoPlace,locality, cost, usersReserve }),
+        body: JSON.stringify({ name, picture, maxPlace, dispoPlace, locality, cost, usersReserve }),
         headers: { "Content-Type": "application/json", "authorization": "Bearer " + token }
     });
     data = [await response.json(), await response.status];

@@ -33,7 +33,7 @@ const EventDetail: FunctionComponent<Props> = ({ event, clickcard, CurrentUser }
         const token = Cookies.get('token')
         if (token) {
             const maxId: number = event.usersReserve.length === 0 ? 0 : event.usersReserve.reduce((acc, pair: any) => Math.max(acc, pair[0]), 0);
-            eventUpdate(event._id, event.name, event.picture, event.maxPlace, event.dispoPlace, [`${maxId + 1}`, CurrentUser._id], token).then(result => {
+            eventUpdate(event._id, event.name, event.picture, event.maxPlace, event.dispoPlace, [`${maxId + 1}`, event.locality, event.cost, CurrentUser._id], token).then(result => {
                 console.log(result);
                 userUpdateReserve([maxId + 1, event._id], token).then((caca) => {
                     console.log(caca);
