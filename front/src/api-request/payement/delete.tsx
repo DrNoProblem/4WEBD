@@ -1,6 +1,6 @@
 async function payementDelete(token:string, _id:string) {
     var data: any = []
-    const response = await fetch(`http://localhost:4000/payement/${_id}`, {
+    const response = await fetch(`http://localhost:4001/payement/${_id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

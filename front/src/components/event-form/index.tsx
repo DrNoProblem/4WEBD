@@ -10,17 +10,19 @@ type Props = {
 const EventForm: FunctionComponent<Props> = ({ request, event }) => {
 
     var newField: any = {
-        name: '',
-        picture: '',
-        cost: '',
-        locality: '',
-        date: '',
-        maxPlace: ''
+        name: event.name,
+        picture: event.picture,
+        cost: event.cost,
+        locality: event.locality,
+        date: event.date,
+        maxPlace: event.maxPlace,
+        dispoPlace: event.dispoPlace
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         newField = { ...newField, [e.target.name]: e.target.value };
         console.log(newField)
+        console.log(event._id)
     }
 
 
@@ -32,7 +34,8 @@ const EventForm: FunctionComponent<Props> = ({ request, event }) => {
             cost: parseInt(newField.cost),
             locality: newField.locality,
             date: newField.date,
-            maxPlace: parseInt(newField.maxPlace)
+            maxPlace: parseInt(newField.maxPlace),
+            dispoPlace: parseInt(newField.dispoPlace),
         }
         request(newEventPart)
     }

@@ -7,9 +7,7 @@ const helmet = require("helmet");
 const compression = require("compression");
 const config = require("./config");
 
-const payementRoutes = require("./routes/payement.routes");
-const eventRoutes = require("./routes/event.routes");
-const userRoutes = require("./routes/user.routes");
+const authRoutes = require("./auth-routes");
 
 const app = express();
 
@@ -30,15 +28,12 @@ mongoose
 
   
 // Routes
-
-app.use("/payement", payementRoutes);
-app.use("/users", userRoutes);
-app.use("/events", eventRoutes);
+app.use("/payement", authRoutes);
 
 // Default route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the API!" });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4100;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

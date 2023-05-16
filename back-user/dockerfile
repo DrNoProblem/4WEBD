@@ -1,0 +1,30 @@
+# Utilisez une image de base Node.js
+FROM node:14
+
+# Définissez le répertoire de travail à l'intérieur du conteneur
+WORKDIR /app
+
+# Copiez package.json et package-lock.json dans le répertoire de travail
+COPY package*.json ./
+COPY . .
+
+# Installez les dépendances du projet
+RUN npm install
+
+# Installez react-scripts globalement
+RUN npm install nodemon
+
+# Copiez le reste des fichiers du projet dans le répertoire de travail
+COPY . .
+
+# Définissez les variables d'environnement (ajustez-les selon vos besoins)
+ENV PORT=4004
+ENV MONGO_URI=mongodb+srv://maxleroux:iPaVdVxImOq4HqM0@custer4webd.bcobxo6.mongodb.net/?retryWrites=true&w=majority
+ENV JWT_SECRET=eventwebd
+ENV JWT_EXPIRES_IN='720h'
+
+# Exposez le port sur lequel le serveur Express.js écoutera les requêtes
+EXPOSE ${PORT}
+
+# Démarrez le serveur Node.js
+CMD [ "node", "./src/app.js" ]

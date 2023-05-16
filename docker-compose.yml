@@ -1,0 +1,44 @@
+version: "3"
+services:
+  back-user:
+    build: ./back-user
+    ports:
+      - 4004:4004
+    environment:
+      - MONGO_URI=mongodb+srv://maxleroux:iPaVdVxImOq4HqM0@custer4webd.bcobxo6.mongodb.net/?retryWrites=true&w=majority
+    depends_on:
+      - mongo
+
+  back-event:
+    build: ./back-event
+    command : npm start
+    ports:
+      - 4000:4000
+    environment:
+      - MONGO_URI=mongodb+srv://maxleroux:iPaVdVxImOq4HqM0@custer4webd.bcobxo6.mongodb.net/?retryWrites=true&w=majority
+    depends_on:
+      - mongo
+
+  back-payement:
+    build: ./back-payement
+    command : npm start
+    ports:
+      - 4001:4001
+    environment:
+      - MONGO_URI=mongodb+srv://maxleroux:iPaVdVxImOq4HqM0@custer4webd.bcobxo6.mongodb.net/?retryWrites=true&w=majority
+    depends_on:
+      - mongo
+
+  front:
+    build: ./front
+    ports:
+      - 3000:3000
+    depends_on:
+      - back-user
+      - back-event
+      - back-payement
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017

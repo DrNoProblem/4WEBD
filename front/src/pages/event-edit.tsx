@@ -30,8 +30,8 @@ const EventEdit: FunctionComponent<Props> = ({ match, CurrentUser, eventList }) 
     const requestEdit = (newEventPart: any) => {
         const token = Cookies.get('token')
         if (token) {
-            eventUpdate(newEventPart.id, newEventPart.name, newEventPart.picture, newEventPart.maxPlace, newEventPart.locality, newEventPart.cost, newEventPart.usersReserve, token).then(() => {
-                history.push(`../user-profile/${CurrentUser._id}`)
+            eventUpdate(newEventPart.id, newEventPart.name, newEventPart.picture, newEventPart.maxPlace, newEventPart.dispoPlace, newEventPart.locality, newEventPart.cost, newEventPart.usersReserve, token).then(() => {
+                //history.push(`../user-profile/${CurrentUser._id}`)
             })
         }
     }
@@ -47,7 +47,7 @@ const EventEdit: FunctionComponent<Props> = ({ match, CurrentUser, eventList }) 
                 </Link>
             </div>
 
-            <EventForm request={() => requestEdit} event={event} />
+            <EventForm request={requestEdit} event={event} />
         </div>
     )
 }

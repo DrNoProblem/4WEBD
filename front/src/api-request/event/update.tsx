@@ -9,6 +9,7 @@ async function eventUpdate(
     usersReserve: Array<string | number>,
     token: string | undefined) {
     var data: any = []
+    console.log( JSON.stringify({ name, picture, maxPlace, dispoPlace, locality, cost, usersReserve }))
     const response = await fetch("http://localhost:4000/events/" + _id, {
         method: "PUT",
         body: JSON.stringify({ name, picture, maxPlace, dispoPlace, locality, cost, usersReserve }),

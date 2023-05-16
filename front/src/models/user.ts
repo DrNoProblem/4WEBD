@@ -6,7 +6,7 @@ export default class User {
   password: string;
   role: string;
   payement: Array<string>;
-  reserv: Array<Array<string>>;
+  reserv: Array<any>;
   eventOwner: Array<string>;
   _id: string;
 
@@ -17,7 +17,7 @@ export default class User {
         password: string = '',
         role: string = '',
         payement: Array<string> = [''],
-        reserv: Array<Array<any>> = [["0", ""]],
+        reserv: Array<any> = [[]],
         eventOwner: Array<string> = [''],
         _id: string = "",
     ) {

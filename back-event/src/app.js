@@ -7,14 +7,12 @@ const helmet = require("helmet");
 const compression = require("compression");
 const config = require("./config");
 
-const payementRoutes = require("./routes/payement.routes");
-const eventRoutes = require("./routes/event.routes");
-const userRoutes = require("./routes/user.routes");
+const eventRoutes = require("./event.routes");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
@@ -28,11 +26,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-  
 // Routes
-
-app.use("/payement", payementRoutes);
-app.use("/users", userRoutes);
 app.use("/events", eventRoutes);
 
 // Default route

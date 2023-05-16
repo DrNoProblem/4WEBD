@@ -1,6 +1,6 @@
 async function userUpdateReserve(eventdata:Array<string | number>, token:string | undefined) {
     var data: any = []
-    const response = await fetch("http://localhost:4000/users/updateMe", {
+    const response = await fetch("http://localhost:4004/users/updateMe", {
         method: "PATCH",
         body: JSON.stringify({ "reserv" : eventdata}),
         headers: { "Content-Type": "application/json", "authorization" : "Bearer " + token}

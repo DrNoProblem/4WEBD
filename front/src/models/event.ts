@@ -8,7 +8,7 @@ export default class Event {
     cost: number;
     maxPlace: number;
     dispoPlace: number;
-    usersReserve: Array<string>;
+    usersReserve: Array<any>;
     _id: string;
 
     // 2. Définition des valeurs par défaut des propriétés d'un pokémon.
@@ -20,7 +20,7 @@ export default class Event {
         cost: number = 0,
         maxPlace: number = 0,
         dispoPlace: number = 0,
-        usersReserve: Array<string> = [''],
+        usersReserve: Array<any> = [],
         _id: string = ""
     ) {
         // 3. Initialisation des propiétés d'un pokémons.

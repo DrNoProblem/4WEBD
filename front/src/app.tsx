@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import EventEdit from './pages/event-edit';
 import EventAdd from './pages/event-add';
 import Home from './pages/home';
-import Logo from './components/event-grid/index';
+import Logo from './components/logo-grid/index';
 import PageNotFound from './pages/not-found';
 import UserHeader from './components/user-header';
 import openUserSign from './helpers/display-user';

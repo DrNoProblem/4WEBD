@@ -8,7 +8,7 @@ export const voidevent: Event = {
     "cost" : 0,
     "maxPlace": 0,
     "dispoPlace": 0,
-    "usersReserve": [],
+    "usersReserve": [[]],
     "_id": ""
 }
 

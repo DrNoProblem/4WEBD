@@ -6,7 +6,7 @@ async function payementCreate(
     ownerCard: string,
     token: string | undefined) {
     var data: any = []
-    const response = await fetch("http://localhost:4000/payement/", {
+    const response = await fetch("http://localhost:4001/payement/", {
         method: "POST",
         body: JSON.stringify({ nameCard, numbersCard, CVVCard, dateCard, ownerCard }),
         headers: { "Content-Type": "application/json", "authorization": "Bearer " + token }

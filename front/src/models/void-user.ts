@@ -6,7 +6,7 @@ export const voiduser: User = {
     "password": "",
     "role": "void",
     "payement": [],
-    "reserv": [],
+    "reserv": [[]],
     "eventOwner": [],
     "_id": ""
 }

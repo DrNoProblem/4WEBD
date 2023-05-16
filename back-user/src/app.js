@@ -7,9 +7,7 @@ const helmet = require("helmet");
 const compression = require("compression");
 const config = require("./config");
 
-const payementRoutes = require("./routes/payement.routes");
-const eventRoutes = require("./routes/event.routes");
-const userRoutes = require("./routes/user.routes");
+const userRoutes = require("./user.routes");
 
 const app = express();
 
@@ -28,17 +26,13 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-  
 // Routes
-
-app.use("/payement", payementRoutes);
 app.use("/users", userRoutes);
-app.use("/events", eventRoutes);
 
 // Default route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the API!" });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4004;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

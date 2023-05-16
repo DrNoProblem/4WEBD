@@ -32,11 +32,18 @@ const EventDetail: FunctionComponent<Props> = ({ event, clickcard, CurrentUser }
     const reservationEvent = () => {
         const token = Cookies.get('token')
         if (token) {
-            const maxId: number = event.usersReserve.length === 0 ? 0 : event.usersReserve.reduce((acc, pair: any) => Math.max(acc, pair[0]), 0);
-            eventUpdate(event._id, event.name, event.picture, event.maxPlace, event.dispoPlace, [`${maxId + 1}`, event.locality, event.cost, CurrentUser._id], token).then(result => {
+            event.usersReserve.push(user._id)
+            const maxId = event.usersReserve.length === 0 ? 0 : event.usersReserve.map(reserve => parseInt(reserve[0])).reduce((a, b) => Math.max(a, b))
+            eventUpdate(event._id, event.name, event.picture, event.maxPlace, (event.dispoPlace + 1), event.locality, event.cost, event.usersReserve, token).then(result => {
                 console.log(result);
-                userUpdateReserve([maxId + 1, event._id], token).then((caca) => {
-                    console.log(caca);
+                user.reserv.push(['' + (maxId + 1), event._id])
+                userUpdateReserve(user.reserv, token).then((resultuser) => {
+                    if (resultuser === 200) {
+                        handleSelectEvent()
+                    }
+                    else {
+                        setreverseIsOK(true)
+                    }
                 })
             })
         }

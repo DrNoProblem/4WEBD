@@ -6,6 +6,7 @@ import voiduser from '../models/void-user';
 import UserTable from '../components/table-profile/user';
 import AdminTable from '../components/table-profile/admin';
 import OrgaTable from '../components/table-profile/orga';
+import voidevent from '../models/void-event';
 
 interface Props extends RouteComponentProps<{ id: string }> {
     eventList: Array<Event>,
@@ -17,6 +18,7 @@ const UserProfile: FunctionComponent<Props> = ({ match, eventList, userList, Cur
 
 
     const [user, setUser] = useState<User>(voiduser);
+    const [orgaList, setorgaList] = useState<Array<Event>>([voidevent]);
 
 
     useEffect(() => {
@@ -25,6 +27,14 @@ const UserProfile: FunctionComponent<Props> = ({ match, eventList, userList, Cur
                 setUser(user)
             }
         });
+        
+        var neworgaList: Array<Event> = [];
+        eventList.map((event) => {
+            if (user.eventOwner.includes(event._id)) {
+                neworgaList.push(event);
+            }
+        })
+        setorgaList(neworgaList)
 
     }, [match.params.id, eventList, userList, CurrentUser]);
 
@@ -44,11 +54,11 @@ const UserProfile: FunctionComponent<Props> = ({ match, eventList, userList, Cur
             <div className="user-page__container flex-col w75" >
                 {(() => {
                     if (user.role === 'user') {
-                        return <UserTable events={eventList} CurrentUser={user}/>
+                        return <UserTable events={eventList} CurrentUser={user} />
                     } else if (user.role === 'admin') {
                         return <AdminTable users={userList} events={eventList} />
                     } else if (user.role === 'orga') {
-                        return <OrgaTable events={eventList}  CurrentUser={user}/>
+                        return <OrgaTable events={orgaList} CurrentUser={user} />
                     }
                 })()
                 }

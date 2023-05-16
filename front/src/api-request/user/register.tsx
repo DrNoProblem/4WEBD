@@ -1,7 +1,7 @@
 async function register(email:string, name:string, password:string, role:string ) {
     var data: any = ''
     try {
-        const response = await fetch("http://localhost:4000/users/signup", {
+        const response = await fetch("http://localhost:4004/users/signup", {
             method: "POST",
             body: JSON.stringify({ email, name, password, role }),
             headers: { "Content-Type": "application/json"}
